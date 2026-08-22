@@ -1,0 +1,126 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-sans: "Be Vietnam Pro", "Segoe UI", system-ui, sans-serif;
+
+  --color-night-950: #0c1013;
+  --color-night-900: #12171b;
+  --color-night-800: #1a2126;
+  --color-night-700: #242d33;
+
+  --color-cream-50: #f7f2e7;
+  --color-cream-100: #f2ebda;
+  --color-cream-300: #d9cdb6;
+
+  --color-bark-400: #a89c86;
+  --color-bark-500: #8b7f6a;
+
+  --color-lamp-300: #f4bd5c;
+  --color-lamp-400: #eaa83a;
+  --color-lamp-500: #d98f22;
+
+  --color-leaf-300: #9fbea8;
+  --color-leaf-400: #7da689;
+  --color-leaf-500: #5f8a72;
+
+  --color-wine-300: #d98f8f;
+  --color-wine-400: #c46a61;
+
+  --radius-lg: 0.75rem;
+  --radius-xl: 1.25rem;
+}
+
+:root {
+  color-scheme: dark;
+  font-family: var(--font-sans);
+  color: var(--color-cream-50);
+  background: var(--color-night-900);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  background:
+    radial-gradient(60rem 40rem at 85% -10%, rgba(234, 168, 58, 0.08), transparent 60%),
+    radial-gradient(50rem 36rem at -10% 110%, rgba(125, 166, 137, 0.08), transparent 60%),
+    var(--color-night-900);
+  color: var(--color-cream-50);
+}
+
+::selection {
+  background: var(--color-lamp-400);
+  color: var(--color-night-900);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-night-900);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-night-700);
+  border-radius: 999px;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-glow {
+  text-shadow: 0 0 40px rgba(244, 189, 92, 0.35);
+}
+
+.spark-dust {
+  animation-name: spark-dust-float;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes spark-dust-float {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-40px) translateX(var(--drift, 0));
+  }
+  85% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-80px) translateX(var(--drift, 0));
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
